@@ -30,20 +30,20 @@ if [[ -z "$DBNAME" ]]; then
   echo "Missing DBNAME variable"
   exit 1
 fi
-if [[ -z "$AWS_ACCESS_KEY_ID" ]]; then
-  echo "Missing AWS_ACCESS_KEY_ID variable"
+if [[ -z "$AWS_ACCESS_KEY_BACKUP" ]]; then
+  echo "Missing AWS_ACCESS_KEY_BACKUP variable"
   exit 1
 fi
-if [[ -z "$AWS_SECRET_ACCESS_KEY" ]]; then
-  echo "Missing AWS_SECRET_ACCESS_KEY variable"
+if [[ -z "$AWS_SECRET_KEY_BACKUP" ]]; then
+  echo "Missing AWS_SECRET_KEY_BACKUP variable"
   exit 1
 fi
-if [[ -z "$AWS_DEFAULT_REGION" ]]; then
-  echo "Missing AWS_DEFAULT_REGION variable"
+if [[ -z "$AWS_REGION_BACKUP" ]]; then
+  echo "Missing AWS_REGION_BACKUP variable"
   exit 1
 fi
-if [[ -z "$S3_BUCKET_PATH" ]]; then
-  echo "Missing S3_BUCKET_PATH variable"
+if [[ -z "$AWS_BUCKET_S3_BACKUP" ]]; then
+  echo "Missing AWS_BUCKET_S3_BACKUP variable"
   exit 1
 fi
 if [[ -z "$DATABASE_URL" ]]; then
