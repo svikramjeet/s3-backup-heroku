@@ -49,16 +49,18 @@ Here's the plan for what's coming:
 - [x] DB backup on S3
 - [x] DNS backup on S3
 - [x] env backup on S3
+- [x] Mysql support
 - [ ] Remove backup after 1 month from S3
-- [ ] Keep back  of 1st day of every month
-- [ ] Encrypt database
+- [ ] Restore
+- [ ] Backup before each deploy
+
 
 And here are some ideas I'm still not sure about:
 - [ ] Slack notification on each backup
-- [ ] Backup before each deploy
 - [ ] Add option to backup on GCP
-
-
+- [ ] Encrypt database
+- [ ] Keep back  of 1st day of every month
+      
 ## AWS Bucket Policy
 This buildpack requires specific policy allows a user, identified by their Amazon Resource Name (ARN), to perform the s3:PutObject action on an Amazon S3 bucket. The Effect is set to "Allow," indicating that this permission is granted.Here is sample bucket policy json:
 
