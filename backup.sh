@@ -53,7 +53,25 @@ fi
 
 printf "${Green}Start dump${EC}"
 
-time pg_dump -b -F c --dbname=$DATABASE_URL | gzip >  /tmp/"${DBNAME}_${FILENAME}".gz
+
+
+if [[ $DB_CONNECTION = pgsql* ]]; then
+  time pg_dump -b -F c --dbname=$DATABASE_URL | gzip >  /tmp/"${DBNAME}_${FILENAME}".gz  
+elif [[ $DB_CONNECTION = mysql* ]]; then
+  URL=${MYSQL_URL#mysql://}
+  USER_PASS=${URL%%@*}
+  HOST_PORT_DB=${URL#*@}
+  HOST_PORT=${HOST_PORT_DB%/*}
+  DB=${HOST_PORT_DB#*/}
+  USER=${USER_PASS%%:*}
+  PASSWORD=${USER_PASS#*:}
+  HOST=${HOST_PORT%:*}
+  PORT=${HOST_PORT#*:}
+  mysqldump --no-tablespaces -h $HOST -p$PASSWORD -u$USER $DATABASE | gzip > /tmp/"${DBNAME}_${FILENAME}".gz
+else
+  echo "Unknown database URL protocol. Must be mysql, mysql2 or postgres"
+  exit 1;
+fi;
 
 EXPIRATION_DATE=$(date -d "$EXPIRATION days" +"%Y-%m-%dT%H:%M:%SZ")
 
