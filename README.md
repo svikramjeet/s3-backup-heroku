@@ -53,6 +53,7 @@ Here's the plan for what's coming:
 - [ ] Remove backup after 1 month from S3
 - [ ] Restore
 - [ ] Backup before each deploy
+- [ ] Add an option to include DATABASE_URL
 
 
 And here are some ideas I'm still not sure about:
